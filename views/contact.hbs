@@ -1,0 +1,43 @@
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+<script type="text/javascript">
+	(function () {
+		emailjs.init('user_nA6P8cuhfuXYF41H0AfBJ');
+	})();
+</script>
+<script type="text/javascript">
+	window.onload = function () {
+		document.getElementById('contact-form').addEventListener('submit', function (event) {
+			event.preventDefault();
+			// generate the contact number value
+			this.contact_number.value = Math.random() * 100000 | 0;
+			var template_params = {
+				"number": this.contact_number.value,
+				"name": this.name_value.value,
+				"email": this.email_value.value,
+				"message": this.message_value.value
+			}
+			emailjs.send('gmail_mean', 'no-captcha', template_params).then(
+				response => {
+					console.log("SUCCESS!", response.status, response.text);
+					this.name_value.value = ""
+				},
+				error => {
+					this.status = "FAILED... Please try again later";
+					console.log("FAILED...", error);
+				}
+			);;
+		});
+	}
+</script>
+<section class="contact">
+	<form id="contact-form">
+		<input type="hidden" name="contact_number">
+		<label>Name</label>
+		<input type="text" name="name_value">
+		<label>Email</label>
+		<input type="email" name="email_value">
+		<label>Message</label>
+		<textarea name="message_value"></textarea>
+		<input type="submit" value="Send">
+	</form>
+</section>
