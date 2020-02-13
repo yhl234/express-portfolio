@@ -21,9 +21,7 @@
 					<a>JavaScript</a>
 				</span>
 			</div>
-			<p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-				magna
-				aliqua.",
+			<p>Twitter clone made by ES6 Javascript, Giphy api, emoji api and Mockaroo.
 			</p>
 			<div class="card-btns">
 				<a href="https://github.com/yhl234/ES6-Twitter-Clone" class="code">Code</a>
@@ -45,8 +43,8 @@
 				aliqua.",
 			</p>
 			<div class="card-btns">
-				<a href="https://github.com/yhl234/vue-portfolio" class="code">Code</a>
-				<a href="https://louislee.best/" class="live">Live</a>
+				<a href="https://github.com/yhl234/layout-with-flexbox-and-grid" class="code">Code</a>
+				<a href="https://layout-with-flexbox-and-grid.now.sh/" class="live">Live</a>
 			</div>
 		</div>
 		<div class="card">
@@ -70,59 +68,54 @@
 		</div>
 		<div class="card">
 			<div class="imgContainer">
-				<img src="/images/projects/ES6-Twitter-Clone.png" loading="lazy" />
+				<img src="/images/projects/layout-with-flexbox-and-grid.png" loading="lazy" />
 			</div>
 			<div>
 				<span>
-					<a>ES6-Twitter-Clone</a> |
-					<a>JavaScript</a>
+					<a>Layout</a> |
+					<a>CSS</a>
 				</span>
 			</div>
-			<p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-				magna
-				aliqua.",
+			<p> Recreate a Bootstrap template without using Bootstrap
 			</p>
 			<div class="card-btns">
-				<a href="https://github.com/yhl234/ES6-Twitter-Clone" class="code">Code</a>
-				<a href="https://19f-adv-client-side-javascript.yhl234.now.sh/" class="live">Live</a>
+				<a href="https://github.com/yhl234/layout-with-flexbox-and-grid" class="code">Code</a>
+				<a href="https://layout-with-flexbox-and-grid.now.sh/" class="live">Live</a>
 			</div>
 		</div>
 		<div class="card">
 			<div class="imgContainer">
-				<img src="/images/projects/ES6-Twitter-Clone.png" loading="lazy" />
+				<img src="/images/projects/refactoring-an-Infographic.png" loading="lazy" />
 			</div>
 			<div>
 				<span>
-					<a>ES6-Twitter-Clone</a> |
-					<a>JavaScript</a>
+					<a>Responsive Layout</a> |
+					<a>CSS</a>
 				</span>
 			</div>
-			<p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-				magna
-				aliqua.",
+			<p> Convert a brochure in PDF into a fully responsive Web page or interface using only text and vector-based
+				elements.
 			</p>
 			<div class="card-btns">
-				<a href="https://github.com/yhl234/ES6-Twitter-Clone" class="code">Code</a>
-				<a href="https://19f-adv-client-side-javascript.yhl234.now.sh/" class="live">Live</a>
+				<a href="https://github.com/yhl234/Refactoring-an-Infographic" class="code">Code</a>
+				<a href="https://refactoring-an-infographic.now.sh/" class="live">Live</a>
 			</div>
 		</div>
 		<div class="card">
 			<div class="imgContainer">
-				<img src="/images/projects/ES6-Twitter-Clone.png" loading="lazy" />
+				<img src="/images/projects/lazy-tulip-ui-redesign.png" loading="lazy" />
 			</div>
 			<div>
 				<span>
-					<a>ES6-Twitter-Clone</a> |
-					<a>JavaScript</a>
+					<a>Lazy Tulip UI Redesign</a> |
+					<a>Teamwork</a>
 				</span>
 			</div>
-			<p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-				magna
-				aliqua.",
+			<p>A modern redesign of a local cafe's website using HTML, CSS and JavaScript
 			</p>
 			<div class="card-btns">
-				<a href="https://github.com/yhl234/ES6-Twitter-Clone" class="code">Code</a>
-				<a href="https://19f-adv-client-side-javascript.yhl234.now.sh/" class="live">Live</a>
+				<a href="#" class="code">Code</a>
+				<a href="https://lazy-tulip-ui-redesign.now.sh/" class="live">Live</a>
 			</div>
 		</div>
 	</div>
@@ -173,3 +166,34 @@
 		<input type="submit" value="Send">
 	</form>
 </section>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+<script type="text/javascript">
+	(function () {
+		emailjs.init('user_nA6P8cuhfuXYF41H0AfBJ');
+	})();
+</script>
+<script type="text/javascript">
+	window.onload = function () {
+		document.getElementById('contact-form').addEventListener('submit', function (event) {
+			event.preventDefault();
+			// generate the contact number value
+			this.contact_number.value = Math.random() * 100000 | 0;
+			var template_params = {
+				"number": this.contact_number.value,
+				"name": this.name_value.value,
+				"email": this.email_value.value,
+				"message": this.message_value.value
+			}
+			emailjs.send('gmail_mean', 'no-captcha', template_params).then(
+				response => {
+					console.log("SUCCESS!", response.status, response.text);
+					this.name_value.value = ""
+				},
+				error => {
+					this.status = "FAILED... Please try again later";
+					console.log("FAILED...", error);
+				}
+			);;
+		});
+	}
+</script>
