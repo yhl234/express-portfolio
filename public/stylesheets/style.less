@@ -107,7 +107,9 @@ header {
 		bottom: 0;
 		right: 0;
 		background-image: url("/images/white-clouds-and-blue-sky-3608311.jpg");
-		background-attachment: fixed;
+		@media @tablet {
+			background-attachment: fixed;
+		}
 		background-size: cover;
 		background-position: center;
 		z-index: -1;
