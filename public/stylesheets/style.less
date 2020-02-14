@@ -1,9 +1,11 @@
 @color-primary: #0f4c75;
 @color-secondary: #3282b8;
-// @color-tertiary: pink;
 @color-interactive: #bbe1fa;
 @color-background: #222831;
 @color-text: #eeeeee;
+@mobile: ~"only screen and (max-width: 529px)";
+@tablet: ~"only screen and (max-width: 949px)";
+@desktop: ~"only screen and (min-width: 950px)";
 
 .dark-background() {
 	background-color: @color-background;
@@ -18,6 +20,9 @@
 }
 .content-padding() {
 	padding: 2rem 5rem 5rem 5rem;
+	@media @mobile {
+		padding: 2rem 5rem 1rem 1rem;
+	}
 }
 
 .nav-right() {
@@ -33,10 +38,17 @@
 			li {
 				list-style: none;
 				padding: 0;
+				@media @mobile {
+					margin-bottom: 1rem;
+				}
 				a {
 					padding: 0.5rem;
 					color: white;
 				}
+			}
+			@media @mobile {
+				flex-direction: column;
+				padding: 0.5rem;
 			}
 		}
 	}
@@ -62,12 +74,11 @@ body {
 // main nav
 header {
 	.nav-right();
+	position: relative;
 	nav {
 		position: fixed;
 		z-index: 3;
-		// a {
-		// 	color: white;
-		// }
+		text-align: right;
 	}
 }
 
@@ -75,15 +86,18 @@ header {
 .home {
 	position: relative;
 	height: 100vh;
-	// background-color: @color-primary;
 	display: grid;
 	justify-content: start;
 	align-items: end;
+
 	.content-padding();
 	h2 {
 		font-size: 4em;
 		margin: 0.5rem;
 		text-transform: capitalize;
+		@media @mobile {
+			font-size: 2rem;
+		}
 	}
 	&::before {
 		content: "";
@@ -111,7 +125,6 @@ header {
 	justify-content: center;
 	.card {
 		.imgContainer {
-			width: 300px;
 			height: 200px;
 			overflow: hidden;
 			img {
@@ -123,16 +136,23 @@ header {
 				}
 			}
 		}
+		span {
+			color: @color-interactive;
+		}
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		border: 1px solid rgba(255, 255, 255, 0.664);
+		border: 1px solid rgba(255, 255, 255, 0.663);
 		text-align: center;
 		margin: 2rem;
-		min-width: 300px;
+		min-width: 250px;
 		max-width: 300px;
 		height: 400px;
+		@media @tablet {
+			margin: 1rem;
+			width: 250px;
+		}
 		p {
 			margin-top: 0;
 		}
@@ -172,6 +192,12 @@ header {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+	@media @tablet {
+		width: 80%;
+	}
+	@media @mobile {
+		width: 100%;
+	}
 }
 input,
 textarea {
@@ -184,20 +210,30 @@ textarea {
 label {
 	margin-bottom: 1rem;
 }
-button {
+[type="submit"] {
 	padding: 0.5rem;
 	width: 30%;
-	border: 0.5px solid #fff;
-	border-collapse: collapse;
+	border: 0.5px solid @color-text;
+	color: @color-text;
 	background: transparent;
+	&:hover {
+		background: @color-interactive;
+		color: @color-background;
+	}
 }
 
 //footer
 footer {
-	.content-padding();
 	padding-bottom: 0;
-
 	.nav-right();
+	justify-content: space-between;
+	align-items: center;
+	small {
+		padding-left: 5rem;
+		@media @mobile {
+			padding-left: 1rem;
+		}
+	}
 	a {
 		&:hover {
 			color: @color-background;
